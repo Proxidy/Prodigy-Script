@@ -282,7 +282,7 @@ if not getgenv().StingrayLoaded then
             local a = request({
                 Url = getgenv().Webhook,
                 Headers = { ['Content-Type'] = 'application/json' },
-                Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1137679640392118282/1169602514459570196/398660117_364512022583464_3817332647811728810_n.jpg" }),
+                Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://i.pinimg.com/736x/2e/0b/ff/2e0bff49592e769a0642813f0e5128dd.jpg" }),
                 Method = "POST"
             })
         end
