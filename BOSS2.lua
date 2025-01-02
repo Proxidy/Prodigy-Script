@@ -236,12 +236,12 @@ if not getgenv().StingrayLoaded then
             end
         end)
     else
-        -- task.spawn(function()
-            -- while Mobs:FindFirstChild(Boss) do
-                -- Mobs[Boss].Humanoid.Health = 0 -- Only works when you have network owner over boss
-                -- task.wait()
-            -- end
-        -- end)
+        task.spawn(function()
+            while Mobs:FindFirstChild(Boss) do
+                -Mobs[Boss].Humanoid.Health = 0 -- Only works when you have network owner over boss
+                -task.wait()
+            end
+        end)
     end
 
     repeat task.wait() until Drops:FindFirstChild("Chest")
