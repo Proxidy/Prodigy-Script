@@ -1,10 +1,7 @@
 repeat task.wait() until game:IsLoaded()
 
-getgenv().StingrayLoaded = false
-
 if not getgenv().StingrayLoaded then
     getgenv().StingrayLoaded = true
-
     -- Load Configs--
     -- Webhook
     pcall(function()
@@ -18,35 +15,35 @@ if not getgenv().StingrayLoaded then
 
     -- Luck Boosts
     pcall(function()
-        if getgenv().LuckBoosts and type(getgenv().LuckBoosts) == "Table" then
-            local LuckBoostsString = "return {"..table.concat(getgenv().LuckBoosts,",").."}"
+        if getgenv().LuckBoosts and type(getgenv().LuckBoosts) == "table" then
+            local LuckBoostsString = "return {" .. table.concat(getgenv().LuckBoosts, ",") .. "}"
             writefile("JJI_LuckBoosts.txt", LuckBoostsString)
         end
         if isfile("JJI_LuckBoosts.txt") then
-            print("Loading Boost Configs: "..readfile("JJI_LuckBoosts.txt"))
+            print("Loading Boost Configs: " .. readfile("JJI_LuckBoosts.txt"))
             getgenv().LuckBoosts = loadstring(readfile("JJI_LuckBoosts.txt"))()
             print(unpack(getgenv().LuckBoosts))
         end
         if not getgenv().LuckBoosts then
             print("No Boost Configurations Found")
             writefile("JJI_LuckBoosts.txt", 'return {"Luck Vial","Withered Beckoning Cat"}')
-            getgenv().LuckBoosts = {"Luck Vial","Withered Beckoning Cat"}
+            getgenv().LuckBoosts = {"Luck Vial", "Withered Beckoning Cat"}
         end
     end)
 
     -- Instant Kill
-    -- pcall(function()
-        -- if getgenv().InstantKill then
-            -- writefile("JJI_InstantKill.txt", getgenv().InstantKill)
-        -- end
-        -- if isfile("JJI_InstantKill.txt") then
-            -- getgenv().InstantKill = readfile("JJI_InstantKill.txt")
-        -- else
-            -- getgenv().InstantKill = "ON"
-        -- end
-    -- end)
+    pcall(function()
+        if getgenv().InstantKill then
+            writefile("JJI_InstantKill.txt", getgenv().InstantKill)
+        end
+        if isfile("JJI_InstantKill.txt") then
+            getgenv().InstantKill = readfile("JJI_InstantKill.txt")
+        else
+            getgenv().InstantKill = "ON"
+        end
+    end)
 
-    -- print("INSTANT KILL: "..InstantKill)
+    print("INSTANT KILL: " .. InstantKill)
 
     -- Init --
     local StartTime = tick()
@@ -54,17 +51,19 @@ if not getgenv().StingrayLoaded then
     local Boosts = getgenv().LuckBoosts
 
     -- UI --
-    local UI = loadstring(game:HttpGet("http://www.stingray-digital.online/script/ui"))()
+    -- local UI = loadstring(game:HttpGet("http://www.stingray-digital.online/script/ui"))()
     local MainUI = UI.InitUI()
     local Toggle = "ON"
+
     pcall(function()
         if isfile("JJI_State.txt") then
             Toggle = readfile("JJI_State.txt")
         else
-            writefile("JJI_State.txt","ON")
+            writefile("JJI_State.txt", "ON")
         end
     end)
-    print("QUEUE TOGGLE: "..Toggle)
+
+    print("QUEUE TOGGLE: " .. Toggle)
 
     if Toggle == "ON" then
         UI.SetState(true)
@@ -78,17 +77,19 @@ if not getgenv().StingrayLoaded then
         else
             Toggle = "OFF"
         end
-        writefile("JJI_State.txt",Toggle)
+        writefile("JJI_State.txt", Toggle)
         print(readfile("JJI_State.txt"))
     end)
 
     -- Constants
     local Cats = {"Withered Beckoning Cat", "Wooden Beckoning Cat", "Polished Beckoning Cat"}
-    local Highlight = {"Maximum Scroll","Domain Shard","Iridescent Lotus","Polished Beckoning Cat","Sapphire Lotus","Fortune Gourd","Demon Finger","Energy Nature Scroll","Purified Curse Hand","Jade Lotus","Cloak of Inferno","Split Soul","Soul Robe","Playful Cloud","Ocean Blue Sailor's Vest","Deep Black Sailor's Vest","Demonic Tobi","Demonic Robe","Rotten Chains"}
+    local Highlight = {"Maximum Scroll", "Domain Shard", "Iridescent Lotus", "Polished Beckoning Cat", "Sapphire Lotus", "Fortune Gourd", "Demon Finger", "Energy Nature Scroll", "Purified Curse Hand", "Jade Lotus", "Cloak of Inferno", "Split Soul", "Soul Robe", "Playful Cloud", "Ocean Blue Sailor's Vest", "Deep Black Sailor's Vest", "Demonic Tobi", "Demonic Robe", "Rotten Chains"}
+
+    getgenv().InstantKill = "ON"
 
     if Toggle == "ON" then
         local s, e = pcall(function()
-            queue_on_teleport('loadstring(game:HttpGet("http://www.stingray-digital.online/script/jji"))()')
+            queue_on_teleport('loadstring(game:HttpGet("http://www.stingray-digital.online/script/jji"))()')()
         end)
     end
 
@@ -99,9 +100,9 @@ if not getgenv().StingrayLoaded then
             --idk place id for boss queue
             -- game:GetService("TeleportService"):Teleport(10450270085)
         -- end
-        -- task.wait(110)
-        -- game:GetService("TeleportService"):Teleport(10450270085)
-    -- end)
+        task.wait(110)
+        game:GetService("TeleportService"):Teleport(10450270085)
+    end)
 
     if game.PlaceId == 10450270085 then
         game:GetService("TeleportService"):Teleport(119359147980471)
@@ -114,7 +115,7 @@ if not getgenv().StingrayLoaded then
         end)
         task.wait(3)
         while task.wait(1) do
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):WaitForChild("Raids"):WaitForChild("QuickStart"):InvokeServer("Boss",SelectedBoss,"Nightmare")
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):WaitForChild("Raids"):WaitForChild("QuickStart"):InvokeServer("Boss", SelectedBoss, "Nightmare")
         end
     end
 
@@ -159,8 +160,7 @@ if not getgenv().StingrayLoaded then
 
     -- Funcs --
     local function Skill(Name)
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):WaitForChild("Combat")
-        :WaitForChild("Skill"):FireServer(Name)
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):WaitForChild("Combat"):WaitForChild("Skill"):FireServer(Name)
     end
 
     local function OpenChest()
@@ -177,11 +177,13 @@ if not getgenv().StingrayLoaded then
         Button.Position = UDim2.new(0.5, 0, 0.5, 0)
         Button.ZIndex = 20
         Button.ImageTransparency = 1
+
         for i, v in ipairs(Button:GetChildren()) do
             if v:IsA("TextLabel") then
                 v:Destroy()
             end
         end
+
         local VIM = game:GetService("VirtualInputManager")
         VIM:SendMouseButtonEvent(X, Y, 0, true, game, 0)
         task.wait()
@@ -203,19 +205,22 @@ if not getgenv().StingrayLoaded then
     end
 
     -- Farm start --
-    repeat InitTP() until Mobs:FindFirstChildWhichIsA("Model")
+    repeat
+        InitTP()
+    until Mobs:FindFirstChildWhichIsA("Model")
     local Boss = Mobs:FindFirstChildWhichIsA("Model").Name
+
     game:GetService("ReplicatedStorage").Remotes.Client.GetClosestTarget.OnClientInvoke = function()
         return Mobs[Boss].Humanoid
     end
-    print("Aim hooked to "..Boss)
+
+    print("Aim hooked to " .. Boss)
 
     -- Use boosts --
     for _, Item in pairs(Boosts) do
         task.wait()
         if (not table.find(Cats, Item)) or LocalPlayer.ReplicatedData.luckBoost.duration.Value == 0 then
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):WaitForChild("Data")
-            :WaitForChild("EquipItem"):InvokeServer(Item)
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Server"):WaitForChild("Data"):WaitForChild("EquipItem"):InvokeServer(Item)
             print(Item .. " used")
         end
     end
@@ -231,12 +236,12 @@ if not getgenv().StingrayLoaded then
             end
         end)
     else
-        task.spawn(function()
-            while Mobs:FindFirstChild(Boss) do
-                Mobs[Boss].Humanoid.Health = 0 -- Only works when you have network owner over boss
-                task.wait()
-            end
-        end)
+        -- task.spawn(function()
+            -- while Mobs:FindFirstChild(Boss) do
+                -- Mobs[Boss].Humanoid.Health = 0 -- Only works when you have network owner over boss
+                -- task.wait()
+            -- end
+        -- end)
     end
 
     repeat task.wait() until Drops:FindFirstChild("Chest")
@@ -244,7 +249,7 @@ if not getgenv().StingrayLoaded then
     game:GetService("ReplicatedStorage").Remotes.Client.Notify.OnClientEvent:Connect(function(Message)
         local Item = string.match(Message, '">(.-)')
         if table.find(Highlight, Item) then
-            Item = "**"..Item.."**"
+            Item = "**" .. Item .. "**"
         end
         Items = Items .. Item .. " | "
     end)
@@ -262,7 +267,9 @@ if not getgenv().StingrayLoaded then
             if not LootUI.Enabled then
                 OpenChest()
             else
-                repeat Click(Flip) until not LootUI.Enabled
+                repeat
+                    Click(Flip)
+                until not LootUI.Enabled
             end
             task.wait()
         end
@@ -275,14 +282,19 @@ if not getgenv().StingrayLoaded then
         if getgenv().Webhook then
             task.wait(2)
             local embed = {
-                ["title"] = LocalPlayer.Name .. " has defeated " .. Boss .. " in " .. tostring(math.floor((tick() - StartTime) * 10) / 10) .. " seconds",
+                ["title"] = LocalPlayer.Name .. " has defeated " .. Boss .. " in " .. tostring(math.floor((tick() - StartTime) * 10 - 20) / 10) .. " seconds",
                 ['description'] = "Collected Items: " .. Items,
                 ["color"] = tonumber(000000)
             }
             local a = request({
                 Url = getgenv().Webhook,
-                Headers = { ['Content-Type'] = 'application/json' },
-                Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://i.pinimg.com/736x/2e/0b/ff/2e0bff49592e769a0642813f0e5128dd.jpg" }),
+                Headers = {
+                    ['Content-Type'] = 'application/json'
+                },
+                Body = game:GetService("HttpService"):JSONEncode({
+                    ['embeds'] = {embed},
+                    ['avatar_url'] = "https://i.pinimg.com/736x/47/19/d6/4719d6f884638abcdaebee32d6ccda1a.jpg"
+                }),
                 Method = "POST"
             })
         end
