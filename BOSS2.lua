@@ -31,20 +31,6 @@ if not getgenv().StingrayLoaded then
         end
     end)
 
-    -- Instant Kill
-    pcall(function()
-        if getgenv().InstantKill then
-            writefile("JJI_InstantKill.txt", getgenv().InstantKill)
-        end
-        if isfile("JJI_InstantKill.txt") then
-            getgenv().InstantKill = readfile("JJI_InstantKill.txt")
-        else
-            getgenv().InstantKill = "ON"
-        end
-    end)
-
-    print("INSTANT KILL: "..InstantKill)
-
     -- Init
     local StartTime = tick()
     local LocalPlayer = game:GetService("Players").LocalPlayer
@@ -82,7 +68,7 @@ if not getgenv().StingrayLoaded then
     local Cats = {"Withered Beckoning Cat", "Wooden Beckoning Cat", "Polished Beckoning Cat"}
     local Highlight = {"Maximum Scroll","Domain Shard","Iridescent Lotus","Polished Beckoning Cat","Sapphire Lotus","Fortune Gourd","Demon Finger","Energy Nature Scroll","Purified Curse Hand","Jade Lotus","Cloak of Inferno","Split Soul","Soul Robe","Playful Cloud","Ocean Blue Sailor's Vest","Deep Black Sailor's Vest","Demonic Tobi","Demonic Robe","Rotten Chains"}
 
-    getgenv().InstantKill = "ON"
+    --getgenv().InstantKill = "ON"
 
     if Toggle == "ON" then
         local s, e = pcall(function()
