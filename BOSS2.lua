@@ -35,18 +35,18 @@ if not getgenv().StingrayLoaded then
     end)
 
     -- Instant Kill
-    pcall(function()
-        if getgenv().InstantKill then
-            writefile("JJI_InstantKill.txt", getgenv().InstantKill)
-        end
-        if isfile("JJI_InstantKill.txt") then
-            getgenv().InstantKill = readfile("JJI_InstantKill.txt")
-        else
-            getgenv().InstantKill = "ON"
-        end
-    end)
+    -- pcall(function()
+        -- if getgenv().InstantKill then
+            -- writefile("JJI_InstantKill.txt", getgenv().InstantKill)
+        -- end
+        -- if isfile("JJI_InstantKill.txt") then
+            -- getgenv().InstantKill = readfile("JJI_InstantKill.txt")
+        -- else
+            -- getgenv().InstantKill = "ON"
+        -- end
+    -- end)
 
-    print("INSTANT KILL: "..InstantKill)
+    -- print("INSTANT KILL: "..InstantKill)
 
     -- Init --
     local StartTime = tick()
@@ -282,7 +282,7 @@ if not getgenv().StingrayLoaded then
             local a = request({
                 Url = getgenv().Webhook,
                 Headers = { ['Content-Type'] = 'application/json' },
-                Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1089257712900120576/1105570269055160422/archivector200300015.png" }),
+                Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1137679640392118282/1169602514459570196/398660117_364512022583464_3817332647811728810_n.jpg" }),
                 Method = "POST"
             })
         end
