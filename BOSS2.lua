@@ -91,15 +91,15 @@ if not getgenv().StingrayLoaded then
     end
 
     -- Black screen check & Players in lobby check
-    task.spawn(function()
-        task.wait(10)
-        if #game:GetService("Players"):GetPlayers() > 1 and game.PlaceId ~= 10450270085 and game.PlaceId ~= 119359147980471 then
+    --task.spawn(function()
+        --task.wait(10)
+        --if #game:GetService("Players"):GetPlayers() > 1 and game.PlaceId ~= 10450270085 and game.PlaceId ~= 119359147980471 then
             -- idk place id for boss queue
-            game:GetService("TeleportService"):Teleport(10450270085)
-        end
-        task.wait(110)
-        game:GetService("TeleportService"):Teleport(10450270085)
-    end)
+            --game:GetService("TeleportService"):Teleport(10450270085)
+        --end
+        --task.wait(110)
+        --game:GetService("TeleportService"):Teleport(10450270085)
+    --end)
 
     if game.PlaceId == 10450270085 then
         game:GetService("TeleportService"):Teleport(119359147980471)
