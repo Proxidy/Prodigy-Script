@@ -105,7 +105,7 @@ end)
 if game.PlaceId == 10450270085 then
     game:GetService("TeleportService"):Teleport(119359147980471)
 elseif game.PlaceId == 119359147980471 then
-    local SelectedBoss = "Heian Imaginary Demon"
+    local SelectedBoss = "Soul Curse"
     pcall(function()
         if readfile("JJI_LastBoss.txt") then
             SelectedBoss = readfile("JJI_LastBoss.txt")
@@ -273,36 +273,33 @@ end)
 
 repeat task.wait() until not (Drops:FindFirstChild("Chest") or LootUI.Enabled)
 
-    -- Send webhook message
-    pcall(function()
-        if getgenv().Webhook then
-            task.wait(2)
-            local embed = {
-                ["title"] = LocalPlayer.Name .. " has defeated " .. Boss .. " in " .. tostring(math.floor((tick() - StartTime) * 10 - 20) / 10) .. " seconds",
-                ['description'] = "Collected Items: " .. Items,
-                ["color"] = tonumber(000000)
-            }
-            local a = request({
-                Url = getgenv().Webhook,
-                Headers = {['Content-Type'] = 'application/json'},
-                Body = game:GetService("HttpService"):JSONEncode({
-                    ['embeds'] = {embed},
-                    ['avatar_url'] = "https://i.pinimg.com/736x/46/94/82/46948259f0527aced808f6d9250b69eb.jpg"
-                }),
-                Method = "POST"
-            })
-        end
-    end)
-
-    -- Click replay
-    task.wait()
-    pcall(function()
-        writefile("JJI_LastBoss.txt", Boss)
-    end)
-
-    task.wait(2)
-    for i = 1, 10, 1 do
-        Click(Replay)
-        task.wait(1)
+-- Send webhook message
+pcall(function()
+    if getgenv().Webhook then
+        task.wait(2)
+        local embed = {
+            ["title"] = LocalPlayer.Name .. " has defeated " .. Boss .. " in " .. tostring(math.floor((tick() - StartTime) * 10) / 10) .. " seconds",
+            ['description'] = "Collected Items: " .. Items,
+            ["color"] = tonumber(000000)
+        }
+        local a = request({
+            Url = getgenv().Webhook,
+            Headers = {
+                ['Content-Type'] = 'application/json'
+            },
+            Body = game:GetService("HttpService"):JSONEncode({['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1089257712900120576/1105570269055160422/archivector200300015.png"}),
+            Method = "POST"
+        })
     end
+end)
+
+-- Click replay
+task.wait()
+pcall(function()
+    writefile("JJI_LastBoss.txt", Boss)
+end)
+task.wait(2)
+for i = 1, 10, 1 do
+    Click(Replay)
+    task.wait(1)
 end
