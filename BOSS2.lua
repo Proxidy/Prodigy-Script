@@ -86,7 +86,7 @@ if not getgenv().StingrayLoaded then
 
     if Toggle == "ON" then
         local s, e = pcall(function()
-            queue_on_teleport('loadstring(game:HttpGet("http://www.stingray-digital.online/script/jji"))()')
+            queue_on_teleport('loadstring(game:HttpGet("https://github.com/Proxidy/Prodigy-Script/blob/main/BOSS2.lua"))()')
         end)
     end
 
