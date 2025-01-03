@@ -14,15 +14,20 @@ if not getgenv().StingrayLoaded then
     end)
 
     -- Luck Boosts
-    getgenv().LuckBoosts = {}
     pcall(function()
-        local LuckConfigs = game:HttpGet("http://de3.bot-hosting.net:21824/jji/getconfig?username="..LocalPlayer.Name)
-        if LuckConfigs ~= "None Found" then
-            for Item in string.gmatch(LuckConfigs, "([^,]+)") do
-                table.insert(getgenv().LuckBoosts, Item)
-            end
-        else
-            getgenv().LuckBoosts = {"Luck Vial"}
+        if getgenv().LuckBoosts and type(getgenv().LuckBoosts) == "Table" then
+            local LuckBoostsString = "return {"..table.concat(getgenv().LuckBoosts, ",").."}"
+            writefile("JJI_LuckBoosts.txt", LuckBoostsString)
+        end
+        if isfile("JJI_LuckBoosts.txt") then
+            print("Loading Boost Configs: "..readfile("JJI_LuckBoosts.txt"))
+            getgenv().LuckBoosts = loadstring(readfile("JJI_LuckBoosts.txt"))()
+            print(unpack(getgenv().LuckBoosts))
+        end
+        if not getgenv().LuckBoosts then
+            print("No Boost Configurations Found")
+            writefile("JJI_LuckBoosts.txt", 'return {"Luck Vial","Withered Beckoning Cat"}')
+            getgenv().LuckBoosts = {"Luck Vial", "Withered Beckoning Cat"}
         end
     end)
 
