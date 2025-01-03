@@ -1,8 +1,8 @@
 repeat task.wait() until game:IsLoaded()
 
 if not getgenv().StingrayLoaded then
-    getgenv().StingrayLoaded = true -- Load Configs--
-    
+    getgenv().StingrayLoaded = true
+    -- Load Configs
     -- Webhook
     pcall(function()
         if getgenv().Webhook then
@@ -12,7 +12,7 @@ if not getgenv().StingrayLoaded then
             getgenv().Webhook = readfile("JJI_Webhook.txt")
         end
     end)
-
+    
     -- Luck Boosts
     getgenv().LuckBoosts = {}
     pcall(function()
@@ -22,10 +22,10 @@ if not getgenv().StingrayLoaded then
                 table.insert(getgenv().LuckBoosts, Item)
             end
         else
-            getgenv().LuckBoosts = {"Luck Vial","Withered Beckoning Cat"}
+            getgenv().LuckBoosts = {"Luck Vial"}
         end
     end)
-
+    
     -- Instant Kill
     pcall(function()
         if getgenv().InstantKill then
@@ -37,6 +37,7 @@ if not getgenv().StingrayLoaded then
             getgenv().InstantKill = "OFF"
         end
     end)
+    
     print("INSTANT KILL: "..InstantKill)
 end
 
@@ -69,26 +70,26 @@ UI.SetMain(function(State)
     else
         Toggle = "OFF"
     end
-    writefile("JJI_State.txt", Toggle)
+    writefile("JJI_State.txt",Toggle)
     print(readfile("JJI_State.txt"))
 end)
 
 -- Constants
 local Cats = {"Withered Beckoning Cat", "Wooden Beckoning Cat", "Polished Beckoning Cat"}
-local Highlight = {"Maximum Scroll","Domain Shard","Iridescent Lotus","Polished Beckoning Cat","Sapphire Lotus","Fortune Gourd","Demon Finger","Energy Nature Scroll","Purified Curse Hand","Jade Lotus","Cloak of Inferno","Split Soul","Soul Robe","Playful Cloud","Ocean Blue Sailor's Vest","Deep Black Sailor's Vest","Demonic Tobi","Demonic Robe","Rotten Chains"}
+local Highlight = {"Maximum Scroll", "Domain Shard", "Iridescent Lotus", "Polished Beckoning Cat", "Sapphire Lotus", "Fortune Gourd", "Demon Finger", "Energy Nature Scroll", "Purified Curse Hand", "Jade Lotus", "Cloak of Inferno", "Split Soul", "Soul Robe", "Playful Cloud", "Ocean Blue Sailor's Vest", "Deep Black Sailor's Vest", "Demonic Tobi", "Demonic Robe", "Rotten Chains"}
 
 if Toggle == "ON" then
     local s, e = pcall(function()
-        queue_on_teleport('loadstring(game:HttpGet("http://www.stingray-digital.online/script/jji"))()')
+        queue_on_teleport('loadstring(game:HttpGet("http://www.stingray-digital.online/script/jji"))()')()
     end)
 end
 
--- Black screen check & Players in lobby check--
+-- Black screen check & Players in lobby check --
 task.spawn(function()
     task.wait(10)
-    -- Uncomment this if you want to do it with other players --
+    -- Uncomment this if you want to do it with other players
     -- if #game:GetService("Players"):GetPlayers() > 1 and game.PlaceId ~= 10450270085 and game.PlaceId ~= 119359147980471 then
-    -- idk place id for boss queue --
+    -- idk place id for boss queue
     -- game:GetService("TeleportService"):Teleport(10450270085)
     -- end
     task.wait(110)
@@ -194,7 +195,9 @@ local function Domain(Name)
 end
 
 -- Farm start --
-repeat InitTP() until Mobs:FindFirstChildWhichIsA("Model")
+repeat
+    InitTP()
+until Mobs:FindFirstChildWhichIsA("Model")
 local Boss = Mobs:FindFirstChildWhichIsA("Model").Name
 game:GetService("ReplicatedStorage").Remotes.Client.GetClosestTarget.OnClientInvoke = function()
     return Mobs[Boss].Humanoid
@@ -212,9 +215,11 @@ for _, Item in pairs(Boosts) do
 end
 
 -- Skill spam --
--- task.wait(1)
+task.wait(1)
 if InstantKill ~= "ON" then
-    repeat Domain("Unequivocal Love") until Effects:FindFirstChild("DomainSphere")
+    repeat
+        Domain("Unequivocal Love")
+    until Effects:FindFirstChild("DomainSphere")
     task.spawn(function()
         while Mobs:FindFirstChild(Boss) do
             Mobs[Boss].Humanoid.Health = 0
@@ -237,7 +242,7 @@ local Items = "| "
 game:GetService("ReplicatedStorage").Remotes.Client.Notify.OnClientEvent:Connect(function(Message)
     local Item = string.match(Message, '">(.-)')
     if table.find(Highlight, Item) then
-        Item = "**" .. Item .. "**"
+        Item = "**"..Item.."**"
     end
     Items = Items .. Item .. " | "
 end)
@@ -255,7 +260,9 @@ task.spawn(function()
         if not LootUI.Enabled then
             OpenChest()
         else
-            repeat Click(Flip) until not LootUI.Enabled
+            repeat
+                Click(Flip)
+            until not LootUI.Enabled
         end
         task.wait()
     end
@@ -274,8 +281,8 @@ pcall(function()
         }
         local a = request({
             Url = getgenv().Webhook,
-            Headers = {['Content-Type'] = 'application/json'},
-            Body = game:GetService("HttpService"):JSONEncode({['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1089257712900120576/1105570269055160422/archivector200300015.png"}),
+            Headers = { ['Content-Type'] = 'application/json' },
+            Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1089257712900120576/1105570269055160422/archivector200300015.png" }),
             Method = "POST"
         })
     end
