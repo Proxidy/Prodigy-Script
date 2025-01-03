@@ -284,7 +284,7 @@ if not getgenv().StingrayLoaded then
                 Headers = {
                     ['Content-Type'] = 'application/json'
                 },
-                Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1089257712900120576/1105570269055160422/archivector200300015.png" }),
+                Body = game:GetService("HttpService"):JSONEncode({ ['embeds'] = {embed}, ['avatar_url'] = "https://cdn.discordapp.com/attachments/1137679640392118282/1324710595391651840/LogsLogo.png?ex=67792461&is=6777d2e1&hm=14ab6b43172e2b5b97fbe086dd74b138cb75d2711ecea36f57adfb0110f1b023&" }),
                 Method = "POST"
             })
         end
