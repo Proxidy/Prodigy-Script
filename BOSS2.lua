@@ -38,7 +38,7 @@ if not getgenv().StingrayLoaded then
                 table.insert(getgenv().LuckBoosts, Item)
             end
         else
-            getgenv().LuckBoosts = {"Luck Vial"}
+            getgenv().LuckBoosts = {"Luck Vial", "Withered Beckoning Cat"}
         end
     end)
     print("INSTANT KILL: " .. InstantKill)
