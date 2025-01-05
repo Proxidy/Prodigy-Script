@@ -1,4 +1,3 @@
-while true do
 repeat task.wait() until game:IsLoaded()
 
 if not getgenv().StingrayLoaded then
