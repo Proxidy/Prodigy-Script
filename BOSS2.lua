@@ -44,33 +44,33 @@ if not getgenv().StingrayLoaded then
     print("INSTANT KILL: " .. InstantKill)
 
     -- UI --
-    local UI = loadstring(game:HttpGet("http://www.stingray-digital.online/script/ui"))()
-    local MainUI = UI.InitUI()
-    local Toggle = "ON"
-    pcall(function()
-        if isfile("JJI_State.txt") then
-            Toggle = readfile("JJI_State.txt")
-        else
-            writefile("JJI_State.txt", "ON")
-        end
-    end)
-    print("QUEUE TOGGLE: " .. Toggle)
+    --local UI = loadstring(game:HttpGet("http://www.stingray-digital.online/script/ui"))()
+    --local MainUI = UI.InitUI()
+    --local Toggle = "ON"
+    --pcall(function()
+        --if isfile("JJI_State.txt") then
+            --Toggle = readfile("JJI_State.txt")
+        --else
+            --writefile("JJI_State.txt", "ON")
+        --end
+    --end)
+    --print("QUEUE TOGGLE: " .. Toggle)
 
-    if Toggle == "ON" then
-        UI.SetState(true)
-    else
-        UI.SetState(false)
-    end
+    --if Toggle == "ON" then
+        --UI.SetState(true)
+    --else
+        --UI.SetState(false)
+    --end
 
-    UI.SetMain(function(State)
-        if State == 1 then
-            Toggle = "ON"
-        else
-            Toggle = "OFF"
-        end
-        writefile("JJI_State.txt", Toggle)
-        print(readfile("JJI_State.txt"))
-    end)
+    --UI.SetMain(function(State)
+        --if State == 1 then
+            --Toggle = "ON"
+        --else
+            --Toggle = "OFF"
+        --end
+        --writefile("JJI_State.txt", Toggle)
+        --print(readfile("JJI_State.txt"))
+    --end)
 
     -- Constants
     local Cats = {"Withered Beckoning Cat", "Wooden Beckoning Cat", "Polished Beckoning Cat"}
