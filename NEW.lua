@@ -146,6 +146,10 @@ local Destructibles = Objects:WaitForChild("Destructibles")
 local LootUI = LocalPlayer.PlayerGui:WaitForChild("Loot")
 local Flip = LootUI:WaitForChild("Frame"):WaitForChild("Flip")
 local Replay = LocalPlayer.PlayerGui:WaitForChild("ReadyScreen"):WaitForChild("Frame"):WaitForChild("Replay")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Remotes = ReplicatedStorage:WaitForChild("Remotes")
+local Server = Remotes:WaitForChild("Server")
+local Combat = Server:WaitForChild("Combat")
 
 -- Destroy fx --
 Effects.ChildAdded:Connect(function(Child)
