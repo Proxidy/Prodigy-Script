@@ -43,7 +43,7 @@ local Used, LuckError = pcall(function()
             table.insert(getgenv().LuckBoosts, Item)
         end
     else
-        getgenv().LuckBoosts = {"Luck Vial", "Withered Beckoning Cat"}
+        getgenv().LuckBoosts = {"Luck Vial", "Wooden Beckoning Cat"}
     end
 end)
 if not Used then
