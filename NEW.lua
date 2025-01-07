@@ -1,5 +1,4 @@
 repeat task.wait() until game:IsLoaded() 
-print("Script Loading") 
 
 if not getgenv().StingrayLoaded then 
     getgenv().StingrayLoaded = true 
