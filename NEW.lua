@@ -419,3 +419,14 @@ if not getgenv().StingrayLoaded then
         print("Failed to send webhook:",Error) 
     end 
 end
+    -- Click replay --
+    task.wait()
+    pcall(function()
+        writefile("JJI_LastBoss.txt", Boss)
+    end)
+    task.wait(2)
+    for i = 1, 10, 1 do
+        Click(Replay)
+        task.wait(1)
+    end
+end
