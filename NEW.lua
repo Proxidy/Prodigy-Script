@@ -76,35 +76,35 @@ task.spawn(function()
 end)
 
 -- UI --
-local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Manta/Stingray/refs/heads/main/UI"))()
-local MainUI = UI.InitUI()
+-- UI --local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Manta/Stingray/refs/heads/main/UI"))()
+-- UI --local MainUI = UI.InitUI()
 
-local Toggle = "ON"
-pcall(function()
-    if isfile("JJI_State.txt") then
+-- UI --local Toggle = "ON"
+-- UI --pcall(function()
+    -- UI --if isfile("JJI_State.txt") then
         Toggle = readfile("JJI_State.txt")
-    else
+    -- UI --else
         writefile("JJI_State.txt","ON")
-    end
-end)
+    -- UI --end
+-- UI --end)
 
-print("QUEUE TOGGLE: "..Toggle)
+-- UI --print("QUEUE TOGGLE: "..Toggle)
 
-if Toggle == "ON" then
-    UI.SetState(true)
-else
-    UI.SetState(false)
-end
+-- UI --if Toggle == "ON" then
+    -- UI --UI.SetState(true)
+-- UI --else
+    -- UI --UI.SetState(false)
+-- UI --end
 
-UI.SetMain(function(State)
-    if State == 1 then
-        Toggle = "ON"
-    else
-        Toggle = "OFF"
-    end
-    writefile("JJI_State.txt",Toggle)
-    print(readfile("JJI_State.txt"))
-end)
+-- UI --UI.SetMain(function(State)
+    -- UI --if State == 1 then
+        -- UI --Toggle = "ON"
+    -- UI --else
+        -- UI --Toggle = "OFF"
+    -- UI --end
+    -- UI --writefile("JJI_State.txt",Toggle)
+    -- UI --print(readfile("JJI_State.txt"))
+-- UI --end)
 
 
 -- Constants
