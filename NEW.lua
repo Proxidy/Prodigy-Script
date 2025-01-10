@@ -82,9 +82,9 @@ end)
 -- UI --local Toggle = "ON"
 -- UI --pcall(function()
     -- UI --if isfile("JJI_State.txt") then
-        Toggle = readfile("JJI_State.txt")
+        -- UI --Toggle = readfile("JJI_State.txt")
     -- UI --else
-        writefile("JJI_State.txt","ON")
+        -- UI --writefile("JJI_State.txt","ON")
     -- UI --end
 -- UI --end)
 
