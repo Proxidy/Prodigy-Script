@@ -144,7 +144,7 @@ if game.PlaceId == 10450270085 then
         end
     end)
 elseif game.PlaceId == 119359147980471 then
-    local SelectedBoss = "Soul Curse"
+    local SelectedBoss = "Heian Imaginary Demon"
     pcall(function()
         if readfile("JJI_LastBoss.txt") then
             SelectedBoss = readfile("JJI_LastBoss.txt")
